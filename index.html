@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner .subtitle {
+            font-size: 1em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .dialogue {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: right;
+            font-style: italic;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        table { width: 100%; border-collapse: collapse; }
+        td { padding: 8px; border: 1px solid #ddd; vertical-align: top; }
+    </style>
+    <script>
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+            var activities = document.getElementsByClassName('activity');
+
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            for (var i = 0; i < activities.length; i++) {
+                activities[i].style.display = 'block';
+            }
+
+            if (selectedTime === '45') {
+                 document.getElementById('activity-2').style.display = 'none';
+            } else if (selectedTime === '40') {
+                document.getElementById('activity-2').style.display = 'none';
+                 document.getElementById('activity-1').style.display = 'none';
+                 document.getElementById('activity-5').style.display = 'none';
+            }
+        }
+
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="header">
+    <h1>Playbook - S1 - M18.5</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+            <option value="45">45 minutos</option>
+            <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+<!-- Actividad 1 -->
+<div id="activity-1" class="activity">
+    <div class="banner" onclick="toggleContent('saludo_ritual')">
+        <div class="title">🎉 Actividad 1: Saludo y Ritual Gnius Club ⏰ Tiempo: 2.5 minutos</div>
+        <div class="subtitle">Inicio de la clase y preparación del ambiente de aprendizaje.</div>
+    </div>
+    <div id="saludo_ritual" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 2 "Bienvenida".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hola, Genios. Hoy, transformaremos nuestra habilidad en el diseño 3D para crear algo épico: ¡figuras de acción coleccionables con articulaciones móviles! Usaremos lo aprendido sobre hardware para dar vida a nuestros personajes favoritos."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 3 "¿Cómo están?".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Antes de sumergirnos en el diseño, quiero saber cómo se sienten hoy. Si están listos para la acción, hagan un movimiento de su personaje favorito. Si necesitan un momento para recargar, pongan las manos en su cabeza."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 4 "Gracias por Asistir".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Juntemos nuestras manos en señal de gratitud por esta oportunidad de crear y aprender juntos. ¡Gracias por asistir, Genios!"</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 4 (0.5 minutos):</strong> Proyectar Diapositiva 5 "Objetivos de la Misión".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Nuestros objetivos para hoy son dos: 1. Diseñar una figura de acción con entre 12 y 20 articulaciones móviles. 2. Utilizar conectores de la librería 'Hardware' para dar movimiento a sus figuras."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 2 -->
+<div id="activity-2" class="activity">
+    <div class="banner" onclick="toggleContent('state_change')">
+        <div class="title">🤸 Actividad 2: State Change ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Actividad física para recargar energía y mejorar la concentración.</div>
+    </div>
+    <div id="state_change" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 6 "Desafío de Equilibrio".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Vamos a despertar nuestros sentidos con un reto de equilibrio. Pónganse de pie sobre una pierna y traten de mantener el equilibrio durante 30 segundos. Luego, cambien de pierna. Esto nos ayudará a mejorar nuestra concentración y enfoque."</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 7 "Cronómetro - 30 segundos por pierna".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 8 "Reflexión sobre el Equilibrio".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Excelente trabajo! Este ejercicio nos ayuda a mejorar nuestra coordinación y concentración. Ahora estamos listos para diseñar figuras de acción increíbles con mucha precisión."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 3 -->
+<div id="activity-3" class="activity">
+    <div class="banner" onclick="toggleContent('team_gnius')">
+        <div class="title">🤝 Actividad 3: Team Gnius ⏰ Tiempo: 6 minutos</div>
+        <div class="subtitle">Organización de equipos y planificación del proyecto con Kanban.</div>
+    </div>
+    <div id="team_gnius" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 9 "Formación de Equipos".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, para esta misión, formen equipos de dos personas. Tómense un minuto para elegir a su compañero o compañera y sentarse juntos."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 10 "Cronómetro - 1 Minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 11 "Recoger Magic Tablets".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora que tienen sus equipos, envíen a un representante a recoger una Magic Tablet por equipo. La necesitarán para trabajar en el diseño de sus figuras de acción."</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 4 (1 minuto):</strong> Proyectar Diapositiva 12 "Cronómetro - 1 Minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 5 (1.5 minutos):</strong> Proyectar Diapositiva 13 "Uso del Tablero Kanban".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy vamos a usar nuevamente el tablero Kanban para organizar nuestro trabajo. Accedan a https://scrumboard.org/ y creen un tablero para su proyecto. Recuerden que Kanban nos ayuda a visualizar nuestras tareas y a mantener un flujo de trabajo eficiente. Usen esta herramienta para planificar las diferentes etapas de diseño de sus figuras de acción."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 6 (1.5 minutos):</strong> Proyectar Diapositiva 14 "Planificación de Tareas".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "En su tablero, creen las columnas 'Pendientes', 'En progreso' y 'Hecho'. Luego, agreguen las tareas necesarias para el reto, como diseñar el cuerpo, brazos, piernas y cabeza, así como identificar y colocar los conectores.  Usen las tarjetas para asignar las tareas de forma equitativa entre los miembros del equipo.  Una buena planificación hará que su proceso de diseño sea más eficiente y divertido, al igual que cuando se hacen los planos para construir un edificio o diseñar un nuevo producto."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 4 -->
+<div id="activity-4" class="activity">
+    <div class="banner" onclick="toggleContent('challenge')">
+        <div class="title">🏆 Actividad 4: Challenge ⏰ Tiempo: 37.5 minutos</div>
+        <div class="subtitle">Creación de figuras de acción coleccionables con articulaciones móviles.</div>
+    </div>
+    <div id="challenge" class="content">
+        <table>
+            <tr>
+                 <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 15 "Challenge".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Genios, llegó el momento de la acción! En este Challenge, cada equipo diseñará una figura de acción coleccionable con articulaciones móviles en TinkerCAD, poniendo a prueba su creatividad y sus habilidades en el uso de la librería 'Hardware'."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (2 minutos):</strong> Proyectar Diapositiva 16 "Diseño de Figuras de Acción".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy se convertirán en diseñadores de juguetes. Imaginen que están creando una figura de acción coleccionable para un videojuego, una película o un cómic. Su figura deberá tener entre 12 y 20 articulaciones móviles, lo cual significa que deberán usar conectores de la librería 'Hardware' para que sus figuras puedan moverse de manera realista. Los niveles de dificultad son:
+                 <ul>
+                    <li><strong>Rookie:</strong> Diseñar una figura de acción con al menos 12 articulaciones móviles usando conectores de la librería Hardware.</li>
+                    <li><strong>Master:</strong> (+) Diseñar una figura de acción con al menos 15 articulaciones móviles y agregarle al menos 2 accesorios extraíbles.</li>
+                    <li><strong>Hacker:</strong> (+) Diseñar una figura de acción con al menos 20 articulaciones móviles, agregarle 3 accesorios extraíbles, y que sea capaz de adoptar al menos 3 poses distintas.</li>
+                 </ul>
+                 Empiecen por el diseño del cuerpo principal y luego añadan los brazos, las piernas y la cabeza, asegurándose de que cada pieza esté correctamente conectada para permitir el movimiento. Piensen en cómo cada conector afectará la movilidad de la figura y diviértanse experimentando con diferentes combinaciones. Recuerden que una buena planificación y un diseño detallado serán esenciales para lograr una figura de acción con un movimiento fluido y realista. ¡Es hora de dar vida a sus personajes!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (25 minutos):</strong> Proyectar Diapositiva 17 "Cronómetro - 25 Minutos".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 4 (5 minutos):</strong> Proyectar Diapositiva 18 "Presentación de Figuras".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Tiempo! Ahora, cada equipo tendrá dos minutos para presentar su figura de acción al resto de la clase. Muestren las articulaciones, los accesorios extraíbles y las diferentes poses que puede adoptar su figura. Expliquen cómo utilizaron los conectores de la librería 'Hardware' y qué dificultades enfrentaron al diseñar las articulaciones. Este es un momento para compartir su creatividad y aprender de las soluciones de otros."</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 5 (5 minutos):</strong> Proyectar Diapositiva 19 "Cronómetro - 5 Minutos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 6 (0.5 minutos):</strong> Proyectar Diapositiva 20 "Objetivos Alcanzados".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hemos alcanzado los objetivos de esta misión. Han diseñado una figura de acción con entre 12 y 20 articulaciones móviles, utilizando los conectores de la librería 'Hardware' para dar movimiento a sus creaciones. ¡Excelente trabajo, Genios!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 7 (0.5 minutos):</strong> Proyectar Diapositiva 21 "You've Got Mon-e".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Felicidades, Genios! Han demostrado su habilidad para crear figuras de acción detalladas y funcionales. Todos se llevan Mon-e por su dedicación y creatividad. ¡Sigan explorando y creando!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 5 -->
+<div id="activity-5" class="activity">
+    <div class="banner" onclick="toggleContent('honor_dojo')">
+        <div class="title">🎖️ Actividad 5: Honor de Dojo ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Cierre de la clase y orden del espacio de trabajo.</div>
+    </div>
+    <div id="honor_dojo" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (2 minutos):</strong> Proyectar Diapositiva 22 "Honor the Dojo".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, hemos llegado al final de la misión de hoy. Por favor, cada equipo pase al frente para devolver su Magic Tablet y asegúrense de dejar sus áreas de trabajo limpias y organizadas. Su colaboración y cuidado son esenciales para nuestro espacio de aprendizaje. ¡Gracias por su esfuerzo y compromiso!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+</div>
+
+</body>
+</html>
